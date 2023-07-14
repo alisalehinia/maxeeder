@@ -4,7 +4,7 @@ import image from "../public/image1.jpg"
 
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
-import { HeartIcon } from "@heroicons/react/24/outline";
+import { BookmarkIcon, HeartIcon } from "@heroicons/react/24/outline";
 
 import { useInView } from 'react-intersection-observer';
 import Slider from "../components/Slider";
@@ -58,6 +58,24 @@ const topProducts = [
     name: "نام اول",
     desc: "لورم ایپسوم که گاهی اوقات به آن  نیز گفته می‌شود، متن مکان نگهدار مورد استفاده در طراحی هنگام ایجاد محتوا است.",
     price: 2777000
+  },
+  {
+    id: 4,
+    name: "نام اول",
+    desc: "لورم ایپسوم که گاهی اوقات به آن  نیز گفته می‌شود، متن مکان نگهدار مورد استفاده در طراحی هنگام ایجاد محتوا است.",
+    price: 2777000
+  },
+  {
+    id: 5,
+    name: "نام اول",
+    desc: "لورم ایپسوم که گاهی اوقات به آن  نیز گفته می‌شود، متن مکان نگهدار مورد استفاده در طراحی هنگام ایجاد محتوا است.",
+    price: 2777000
+  },
+  {
+    id: 6,
+    name: "نام اول",
+    desc: "لورم ایپسوم که گاهی اوقات به آن  نیز گفته می‌شود، متن مکان نگهدار مورد استفاده در طراحی هنگام ایجاد محتوا است.",
+    price: 2777000
   }
 ]
 export default function Home() {
@@ -76,7 +94,7 @@ export default function Home() {
     visible: { opacity: 1, x: 0 },
   };
   return (
-    <div className="bg-slate-50">
+    <div className="bg-slate-100 opacity-100">
       <Slider slides={slides} />
       {/* top products */}
       <motion.h4 className="text-secondary-800 font-extrabold text-2xl m-2 text-center"
@@ -84,19 +102,19 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >محصولات پر طرفدار</motion.h4>
-      <div className="bg-slate-100 sm:w-[600px] md:w-[900px] lg:w-[1200px] mx-auto flex justify-between flex-wrap p-8 mb-8">
+      <div className="bg-slate-100 sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280] mx-auto flex justify-between flex-wrap p-8 mb-8">
 
         {
           topProducts.map(product =>
-          (<motion.div key={product.id} className="rounded-lg bg-white m-2 sm:w-[200px] md:w-[250px] lg:w-[300px] drop-shadow-2xl"
+          (<motion.div key={product.id} className="rounded-lg bg-white m-2 sm:w-[200px] md:w-[250px] lg:w-[300px] drop-shadow-2xl "
             ref={ref}
             variants={variants}
             initial={{ x: 500, opacity: 0 }}
             animate={inView ? 'visible' : 'hidden'}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="w-full p-4">
-              <Image src={image} alt="product image" className="overflow-hidden h-80 rounded-lg object-contain" />
+            <div className="w-full  pb-2 ">
+              <Image src={image} alt="product image" className="overflow-hidden p-1  h-80 rounded-lg object-cover " />
             </div>
             <h5 className="font-bold text-xl text-primary-900 p-2">{product.name}</h5>
             <div className="p-2">
@@ -105,17 +123,23 @@ export default function Home() {
             <div className="w-full flex gap-2 p-4 font-semibold text-primary-900">
               <span>قیمت:</span>{product.price}<span>تومان</span>
             </div>
-            <div className="w-full flex justify-between p-2">
-              <button className="btn btn--primary m-1">افزودن به سبد</button>
-              <button className="btn">
-                <HeartIcon className="h-5 w-5 text-red-500 " />
-              </button>
+            <div className="w-full flex justify-between p-2 items-center">
+              <button className="btn btn--primary m-1 flex-1 ">افزودن به سبد</button>
+              <div>
+                <button className="btn">
+                  <HeartIcon className="h-5 w-5 text-red-500 " />
+                </button>
+                <button className="btn">
+                  <BookmarkIcon className="h-5 w-5 text-green-500 " />
+                </button>
+              </div>
+
             </div>
           </motion.div>))
         }
       </div>
       {/* categories */}
-      <motion.h4 className="text-secondary-800 font-extrabold text-2xl m-2 text-center"
+      <motion.h4 className="text-secondary-800 font-extrabold text-2xl m-2 text-center "
         // initial={{ opacity: 0 }}
         // animate={{ opacity: 1 }}
         // transition={{ duration: 1 }}
@@ -124,7 +148,7 @@ export default function Home() {
         whileInView="show"
         viewport={{ once: false, amount: 0.25 }}
       >دسته بندی ها </motion.h4>
-      <motion.div className="bg-slate-100 sm:w-[600px] md:w-[900px] lg:w-[1200px] mx-auto flex justify-between flex-wrap p-8"
+      <motion.div className="bg-slate-50 sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280] mx-auto flex justify-between flex-wrap p-8"
         // initial={{ x: 500, opacity: 0 }}
         // animate={controls}
         // transition={{ duration: 0.5, delay: 0.2 }}
@@ -137,30 +161,27 @@ export default function Home() {
             variants={navVariants}
             initial="hidden"
             whileInView="show"
-            className="bg-white rounded-lg m-2 p-2 sm:w-[200px] md:w-[250px] lg:w-[300px] drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
+            className="bg-white rounded-lg m-2 p-2 sm:w-[200px] md:w-[250px] lg:w-[300px] shadow-lg shadow-purple-300 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
             نام دسته بندی
           </motion.div>))
         }
       </motion.div>
       {/* partnership sites */}
-      <motion.h4 className="text-secondary-800 font-extrabold text-2xl m-2 text-center"
+      <motion.h4 className="text-secondary-800 font-extrabold text-2xl m-2 text-center "
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >سایت های همکار </motion.h4>
-      <motion.div className="bg-slate-100 sm:w-[600px] md:w-[900px] lg:w-[1200px] mx-auto flex justify-between flex-wrap p-8"
+      <motion.div className="bg-slate-100 sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280] mx-auto flex justify-between flex-wrap p-8 "
         initial={{ x: 500, opacity: 0 }}
         animate={controls}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         {
           [1, 2, 3, 4, 5, 6, 7, 8].map((category, index) =>
-          (<div key={index} dir="ltr" className="bg-white rounded-lg m-2 p-2 sm:w-[200px] md:w-[250px] lg:w-[300px] drop-shadow-2xl flex items-center justify-between ">
+          (<div key={index} dir="ltr" className="bg-white rounded-lg m-2 p-2 sm:w-[200px] md:w-[250px] lg:w-[300px] drop-shadow-2xl flex items-center justify-between shadow-lg shadow-purple-300">
             <div>
               site address
-            </div>
-            <div>
-              icon
             </div>
           </div>))
         }

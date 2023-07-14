@@ -8,8 +8,11 @@ import { motion } from 'framer-motion';
 import { navVariants } from '../utils/motion';
 import AppDrawer from "../components/Drawer"
 import { useUIContext } from '../context/uiContext.js';
+import { useMediaQuery } from '@mui/material';
+import AccountMenu from './AcountMenu';
 
 const Header = () => {
+    const isSmallScreen = useMediaQuery('(max-width:600px)');
 
     const { setDrawerOpen } = useUIContext();
 
@@ -18,7 +21,7 @@ const Header = () => {
         color: 'blue',
     };
     return (
-        <motion.div className='flex p-4 items-center justify-between bg-primary-100 mb-2 drop-shadow-xl'
+        <motion.div className='flex p-4 bg-gradient-to-r from-violet-500 to-blue-200 items-center justify-between bg-primary-100 mb-4 drop-shadow-xl'
             variants={navVariants}
             initial="hidden"
             whileInView="show"
@@ -28,7 +31,7 @@ const Header = () => {
                     <Image src={logo} width="180" height="180" alt='logo' />
                 </div>
                 <div className='flex items-center gap-x-4'>
-                    <ul className='flex gap-3'>
+                    {!isSmallScreen && <ul className='flex gap-3'>
                         <li className='inline-block'>
                             <ActiveLink href="/" activeStyle={activeStyle}>
                                 خانه
@@ -42,24 +45,24 @@ const Header = () => {
                             <ActiveLink href="/blogs" activeStyle={activeStyle}>
                                 بلاگ
                             </ActiveLink></li>
-                    </ul>
+                    </ul>}
                     <div>
                         <input className='textField__input' placeholder='جستجو...' />
                     </div>
                 </div>
             </div>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 items-center justify-around px-1'>
                 <div>
-                    <UserIcon className='w-6 h-6' />
+                    <AccountMenu />
                 </div>
                 <div>
                     <ShoppingCartIcon className='w-6 h-6' />
                 </div>
-                <div>
+                {isSmallScreen && <div className='m-2'>
                     <button onClick={() => setDrawerOpen(true)}>
                         <Bars3CenterLeftIcon className="w-6 h-6" />
                     </button>
-                </div>
+                </div>}
             </div>
         </motion.div>
     )

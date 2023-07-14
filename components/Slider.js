@@ -28,7 +28,7 @@ export default function Slider({ slides }) {
         >
             {
                 slides.map(slide => (<SwiperSlide key={slide.image} >
-                    <motion.div className="bg-slate-200 w-[90vw] flex justify-center md:flex-row items-center flex-wrap mx-auto  max-w-7x mb-16"
+                    <motion.div className="bg-gradient-to-r from-violet-300 to-blue-300 rounded-lg w-[90vw] shadow-lg shadow-purple-300 flex justify-center md:flex-row items-center flex-wrap mx-auto  max-w-7x mb-16"
                         variants={staggerContainer}
                         initial="hidden"
                         whileInView="show"
