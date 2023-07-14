@@ -3,11 +3,16 @@ import React from 'react'
 import logo from "../public/logo.png"
 import Link from 'next/link'
 import { useRouter } from 'next/router';
-import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/outline"
+import { Bars3CenterLeftIcon, ShoppingCartIcon, UserIcon } from "@heroicons/react/24/outline"
 import { motion } from 'framer-motion';
 import { navVariants } from '../utils/motion';
+import AppDrawer from "../components/Drawer"
+import { useUIContext } from '../context/uiContext.js';
 
 const Header = () => {
+
+    const { setDrawerOpen } = useUIContext();
+
     const activeStyle = {
         fontWeight: 'bold',
         color: 'blue',
@@ -49,6 +54,11 @@ const Header = () => {
                 </div>
                 <div>
                     <ShoppingCartIcon className='w-6 h-6' />
+                </div>
+                <div>
+                    <button onClick={() => setDrawerOpen(true)}>
+                        <Bars3CenterLeftIcon className="w-6 h-6" />
+                    </button>
                 </div>
             </div>
         </motion.div>
