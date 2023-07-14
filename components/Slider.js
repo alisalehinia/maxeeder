@@ -10,6 +10,8 @@ import image from "../public/image1.jpg"
 import logo from "../public/logo.png"
 
 import { motion } from 'framer-motion';
+import { fadeIn, staggerContainer } from '../utils/motion';
+
 
 
 export default function Slider({ slides }) {
@@ -26,15 +28,20 @@ export default function Slider({ slides }) {
         >
             {
                 slides.map(slide => (<SwiperSlide key={slide.image} >
-                    <div className="bg-slate-200 w-[90vw] flex justify-center md:flex-row items-center flex-wrap mx-auto  max-w-7x mb-16">
+                    <motion.div className="bg-slate-200 w-[90vw] flex justify-center md:flex-row items-center flex-wrap mx-auto  max-w-7x mb-16"
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: false, amount: 0.25 }}
+                    >
                         {/*   image */}
                         <motion.div
-                            initial={{ scale: 0, opacity: 0.5 }}
-                            animate={{ rotate: 360, scale: 1, opacity: 1 }}
-                            transition={{
-                                type: "spring",
-                                duration: 3
-                            }}
+                            // initial={{ scale: 0, opacity: 0.5 }}
+                            // animate={{ rotate: 360, scale: 1, opacity: 1 }}
+                            // transition={{
+                            //     type: "spring",
+                            //     duration: 3
+                            // }}
 
                             className="rounded-md w-[80%]  md:w-1/3 p-4 flex ">
                             <Image src={image} alt="slider image" width="100%" height="100%" className="rounded-md w-full  object-cover md:object-contain " />
@@ -44,13 +51,15 @@ export default function Slider({ slides }) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
                         >
-                            <h4 className='font-bold text-3xl mb-4'>{slide.title}</h4>
-                            <div className='mb-8'>
+                            <h4 className='font-bold text-4xl mb-4 text-slate-900'>{slide.title}</h4>
+                            <motion.div className='mb-8 text-xl font-thin text-slate-800'
+                                variants={fadeIn('up', 'tween', 0.2, 1)}
+                            >
                                 {slide.text}
-                            </div>
+                            </motion.div>
                             <button className='btn btn--primary '>برو به فروشگاه</button>
                         </motion.div>
-                    </div>
+                    </motion.div>
                 </SwiperSlide>))
             }
         </Swiper>

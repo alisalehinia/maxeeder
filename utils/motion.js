@@ -48,7 +48,7 @@ export const staggerContainer = (staggerChildren, delayChildren) => ({
 
 export const textVariant = (delay) => ({
     hidden: {
-        y: 50,
+        y: 30,
         opacity: 0,
     },
     show: {

@@ -8,6 +8,7 @@ import { HeartIcon } from "@heroicons/react/24/outline";
 
 import { useInView } from 'react-intersection-observer';
 import Slider from "../components/Slider";
+import { fadeIn, navVariants, planetVariants, staggerContainer } from "../utils/motion";
 
 const slides = [
   {
@@ -115,20 +116,30 @@ export default function Home() {
       </div>
       {/* categories */}
       <motion.h4 className="text-secondary-800 font-extrabold text-2xl m-2 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // transition={{ duration: 1 }}
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.25 }}
       >دسته بندی ها </motion.h4>
       <motion.div className="bg-slate-100 sm:w-[600px] md:w-[900px] lg:w-[1200px] mx-auto flex justify-between flex-wrap p-8"
-        initial={{ x: 500, opacity: 0 }}
-        animate={controls}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        // initial={{ x: 500, opacity: 0 }}
+        // animate={controls}
+        // transition={{ duration: 0.5, delay: 0.2 }}
+        variants={fadeIn('right', 'tween', 0.2, 1)}
       >
         {
           [1, 2, 3, 4, 5, 6, 7, 8].map((category, index) =>
-          (<div key={index} className="bg-white rounded-lg m-2 p-2 sm:w-[200px] md:w-[250px] lg:w-[300px] drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
+          (<motion.div key={index}
+            // variants={fadeIn('up', 'tween', 0.3, 1)}
+            variants={navVariants}
+            initial="hidden"
+            whileInView="show"
+            className="bg-white rounded-lg m-2 p-2 sm:w-[200px] md:w-[250px] lg:w-[300px] drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
             نام دسته بندی
-          </div>))
+          </motion.div>))
         }
       </motion.div>
       {/* partnership sites */}
