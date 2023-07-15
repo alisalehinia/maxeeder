@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
@@ -47,6 +47,7 @@ module.exports = {
         warning: withOpacity("--color-warning"),
         error: withOpacity("--color-error"),
       },
+
       container: {
         center: true,
       },

@@ -6,7 +6,7 @@ import { useUIContext } from "../context/uiContext";
 export const DrawerCloseButton = styled(IconButton)(() => ({
     position: "absolute",
     top: 10,
-    right: "300px",
+    right: "140px",
     zIndex: 1999
 }));
 
@@ -26,10 +26,11 @@ export default function AppDrawer() {
                 </DrawerCloseButton>}
             <Drawer open={drawerOpen} anchor="right" >
                 <List sx={{
-                    background: 'linear-gradient(to right, #8B5CF6, #60A5FA)',
+                    // background: 'linear-gradient(to right, #8B5CF6, #60A5FA)',
+                    background: "white",
                     height: "100vh"
                 }}>
-                    <ListItemButton sx={{ width: 200 }} >
+                    <ListItemButton sx={{ width: 150 }} >
                         <ListItemText sx={{ textAlign: 'right', color: "#0f172a" }}>
                             خانه
                         </ListItemText>
