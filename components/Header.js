@@ -46,9 +46,6 @@ const Header = () => {
                                 بلاگ
                             </ActiveLink></li>
                     </ul>}
-                    <div>
-                        <input className='textField__input' placeholder='جستجو...' />
-                    </div>
                 </div>
             </div>
             <div className='flex gap-2 items-center justify-around px-1'>

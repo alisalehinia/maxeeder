@@ -103,8 +103,8 @@ const Shop = () => {
             </div>
             <div className='flex justify-center p-2 '>
                 <ReactPaginate
-                    previousLabel={"Previous"}
-                    nextLabel={"Next"}
+                    previousLabel={"قبل"}
+                    nextLabel={"بعد"}
                     pageCount={pageCount}
                     onPageChange={changePage}
                     containerClassName={"paginationBttns"}
