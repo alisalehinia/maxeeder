@@ -18,7 +18,6 @@ const cartSlice = createSlice({
             }
         },
         addToCart(state, action) {
-            console.log(action.payload);
             const existingIndex = state.cartItems.findIndex(
                 (item) => item.id === action.payload.id
             );
@@ -28,14 +27,14 @@ const cartSlice = createSlice({
                     ...state.cartItems[existingIndex],
                     cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
                 };
-                toast.info("Increased product quantity", {
-                    position: "bottom-left",
+                toast.info("تعداد 1 واحد افزایش یافت", {
+                    position: "bottom-right",
                 });
             } else {
                 let tempProductItem = { ...action.payload, cartQuantity: 1 };
                 state.cartItems.push(tempProductItem);
-                toast.success("Product added to cart", {
-                    position: "bottom-left",
+                toast.success("به سبد خرید افزوده شد", {
+                    position: "bottom-right",
                 });
             }
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
@@ -48,8 +47,8 @@ const cartSlice = createSlice({
             if (state.cartItems[itemIndex].cartQuantity > 1) {
                 state.cartItems[itemIndex].cartQuantity -= 1;
 
-                toast.info("Decreased product quantity", {
-                    position: "bottom-left",
+                toast.info("تعداد 1 واحد کاهش یافت", {
+                    position: "bottom-right",
                 });
             } else if (state.cartItems[itemIndex].cartQuantity === 1) {
                 const nextCartItems = state.cartItems.filter(
@@ -58,8 +57,8 @@ const cartSlice = createSlice({
 
                 state.cartItems = nextCartItems;
 
-                toast.error("Product removed from cart", {
-                    position: "bottom-left",
+                toast.error("محصول از سبد خرید حذف شد", {
+                    position: "bottom-right",
                 });
             }
 
@@ -74,8 +73,8 @@ const cartSlice = createSlice({
 
                     state.cartItems = nextCartItems;
 
-                    toast.error("Product removed from cart", {
-                        position: "bottom-left",
+                    toast.error("محصول از سبد خرید حذف شد", {
+                        position: "bottom-right",
                     });
                 }
                 localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
@@ -105,7 +104,7 @@ const cartSlice = createSlice({
         clearCart(state, action) {
             state.cartItems = [];
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-            toast.error("Cart cleared", { position: "bottom-left" });
+            toast.error("Cart cleared", { position: "bottom-right" });
         },
     },
 });

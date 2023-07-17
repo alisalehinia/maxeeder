@@ -1,7 +1,7 @@
 import { ShareIcon, ShoppingCartIcon, StarIcon } from "@heroicons/react/24/outline";
 import { useMediaQuery } from "@mui/material";
 import Image from "next/image";
-import { addToCart } from "../features/cartSlice";
+import { addToCart, getTotals } from "../features/cartSlice";
 import { useDispatch } from "react-redux";
 
 const Card = ({ product }) => {
@@ -11,7 +11,7 @@ const Card = ({ product }) => {
 
     const handleAddToCart = (product) => {
         dispatch(addToCart(product));
-        console.log(product);
+        dispatch(getTotals());
     };
 
     return (

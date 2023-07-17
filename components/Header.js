@@ -23,8 +23,7 @@ const Header = () => {
     const cart = useSelector((state) => state.cart);
     useEffect(() => {
         dispatch(getTotals());
-        console.log(cart);
-    }, [cart, dispatch])
+    }, [])
 
 
     const { setDrawerOpen } = useUIContext();
@@ -66,9 +65,11 @@ const Header = () => {
                 <div>
                     <AccountMenu />
                 </div>
-                <div>
-                    <CartWithBadge />
-                </div>
+                <Link href="/cart">
+                    <div>
+                        <CartWithBadge />
+                    </div>
+                </Link>
                 {isSmallScreen && <div className='m-2'>
                     <button onClick={() => setDrawerOpen(true)}>
                         <Bars3CenterLeftIcon className="w-6 h-6" />

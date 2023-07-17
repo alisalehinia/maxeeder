@@ -56,6 +56,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(loadCartItemsFromLocalStorage());
+    dispatch(getTotals())
   }, [dispatch]);
 
   const controls = useAnimation();

@@ -16,7 +16,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function CartWithBadge() {
     const { cartTotalQuantity } = useSelector((state) => state.cart);
-    console.log(cartTotalQuantity);
     return (
         <IconButton aria-label="cart">
             <StyledBadge badgeContent={cartTotalQuantity} color="primary">

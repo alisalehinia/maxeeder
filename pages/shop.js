@@ -8,7 +8,7 @@ import Card from '../components/Card';
 import { FunnelIcon } from '@heroicons/react/24/outline';
 import { useMediaQuery } from '@mui/material';
 import ReactPaginate from 'react-paginate';
-import { loadCartItemsFromLocalStorage } from '../features/cartSlice';
+import { getTotals, loadCartItemsFromLocalStorage } from '../features/cartSlice';
 import { useDispatch } from 'react-redux';
 
 const Shop = () => {
@@ -16,6 +16,7 @@ const Shop = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(loadCartItemsFromLocalStorage());
+        dispatch(getTotals());
     }, [dispatch]);
 
     const [selectedCategory, setSelectedCategory] = useState(null);
