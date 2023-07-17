@@ -13,7 +13,7 @@ export const DrawerCloseButton = styled(IconButton)(() => ({
 
 export const MiddleDivider = styled((props) => (
     <Divider variant="middle" {...props} />
-))``; // => can add css between backticks
+))``;
 export default function AppDrawer() {
 
     const { drawerOpen, setDrawerOpen } = useUIContext();

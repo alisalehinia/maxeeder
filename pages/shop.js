@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from '../components/navigation/Nav';
 import Recommended from "../components/recommended/Recommended";
 import Products from "../components/products/Products";
@@ -8,8 +8,16 @@ import Card from '../components/Card';
 import { FunnelIcon } from '@heroicons/react/24/outline';
 import { useMediaQuery } from '@mui/material';
 import ReactPaginate from 'react-paginate';
+import { loadCartItemsFromLocalStorage } from '../features/cartSlice';
+import { useDispatch } from 'react-redux';
 
 const Shop = () => {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(loadCartItemsFromLocalStorage());
+    }, [dispatch]);
+
     const [selectedCategory, setSelectedCategory] = useState(null);
 
     // ----------- Input Filter -----------
@@ -74,15 +82,10 @@ const Shop = () => {
         }
 
         return filteredProducts.slice(pagesVisited, pagesVisited + productsPerPage).map(
-            ({ img, title, star, reviews, prevPrice, newPrice }) => (
+            (product) => (
                 <Card
                     key={Math.random()}
-                    img={img}
-                    title={title}
-                    star={star}
-                    reviews={reviews}
-                    prevPrice={prevPrice}
-                    newPrice={newPrice}
+                    product={product}
                 />
             )
         );

@@ -28,7 +28,7 @@ export default function Slider({ slides }) {
         >
             {
                 slides.map(slide => (<SwiperSlide key={slide.image} >
-                    <motion.div className="bg-gradient-to-r from-violet-300 to-blue-300 rounded-lg w-[90vw] shadow-lg shadow-purple-300 flex justify-center md:flex-row items-center flex-wrap mx-auto  max-w-7x mb-16"
+                    <motion.div className="bg-gradient-to-r from-slate-700 to-slate-950 rounded-lg w-[90vw] shadow-lg shadow-purple-300 flex justify-center md:flex-row items-center flex-wrap mx-auto  max-w-7x mb-16"
                         variants={staggerContainer}
                         initial="hidden"
                         whileInView="show"
@@ -36,13 +36,6 @@ export default function Slider({ slides }) {
                     >
                         {/*   image */}
                         <motion.div
-                            // initial={{ scale: 0, opacity: 0.5 }}
-                            // animate={{ rotate: 360, scale: 1, opacity: 1 }}
-                            // transition={{
-                            //     type: "spring",
-                            //     duration: 3
-                            // }}
-
                             className="rounded-md w-[80%]  md:w-1/3 p-4 flex ">
                             <Image src={image} alt="slider image" width="100%" height="100%" className="rounded-md w-full  object-cover md:object-contain " />
                         </motion.div>
@@ -51,8 +44,8 @@ export default function Slider({ slides }) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
                         >
-                            <h4 className='font-bold text-4xl mb-4 text-slate-900'>{slide.title}</h4>
-                            <motion.div className='mb-8 text-xl font-thin text-slate-800'
+                            <h4 className='font-bold text-4xl mb-4 text-slate-50'>{slide.title}</h4>
+                            <motion.div className='mb-8  font-thin text-slate-50 text-sm md:text-lg'
                                 variants={fadeIn('up', 'tween', 0.2, 1)}
                             >
                                 {slide.text}
