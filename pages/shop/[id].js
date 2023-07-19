@@ -3,6 +3,8 @@ import productJson from "../../db/index"
 import { useRouter } from 'next/router'
 import Image from 'next/image';
 import { ChevronDownIcon, ChevronUpIcon, ShieldCheckIcon, StarIcon } from '@heroicons/react/24/outline';
+import { useDispatch } from 'react-redux';
+import { addToCart, getTotals } from '../../features/cartSlice';
 
 const desc = `لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
@@ -15,6 +17,12 @@ const desc = `لورم ایپسوم متن ساختگی با تولید سادگ
 `
 
 const ProductDetailPage = () => {
+    const dispatch = useDispatch();
+
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product));
+        dispatch(getTotals());
+    };
 
     const router = useRouter();
 
@@ -30,7 +38,8 @@ const ProductDetailPage = () => {
         const selectedProduct = productJson.filter(product => product.id == router.query.id);
         setCurrentProduct(selectedProduct[0]);
     }, [router.query.id])
-
+    console.log(router.query.id);
+    console.log(currentProduct);
     if (!currentProduct) {
         return <div>
             loading ...
@@ -100,7 +109,7 @@ const ProductDetailPage = () => {
                         <span className='text-lg'>قیمت:</span>
                         <span className='font-bold text-2xl text-primary-800'>{currentProduct.newPrice}</span>
                     </div>
-                    <button className='btn btn--primary'>افزودن به سبد</button>
+                    <button className='btn btn--primary' onClick={() => handleAddToCart(currentProduct)}>افزودن به سبد</button>
                 </div>
             </div>
         </div>

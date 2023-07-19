@@ -10,6 +10,7 @@ import { useMediaQuery } from '@mui/material';
 import ReactPaginate from 'react-paginate';
 import { getTotals, loadCartItemsFromLocalStorage } from '../../features/cartSlice';
 import { useDispatch } from 'react-redux';
+import Link from 'next/link';
 
 const Shop = () => {
 
@@ -84,10 +85,11 @@ const Shop = () => {
 
         return filteredProducts.slice(pagesVisited, pagesVisited + productsPerPage).map(
             (product) => (
-                <Card
-                    key={Math.random()}
-                    product={product}
-                />
+                <Link href={`/shop/${product.id}`} key={Math.random()}>
+                    <Card
+                        product={product}
+                    />
+                </Link>
             )
         );
     }

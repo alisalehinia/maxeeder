@@ -17,6 +17,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getTotals, loadCartItemsFromLocalStorage } from "../features/cartSlice";
+import Link from "next/link";
 
 const slides = [
   {
@@ -83,10 +84,11 @@ export default function Home() {
         {/* { img, title, star, reviews, prevPrice, newPrice, score } */}
         {
           topProducts.map((product) => {
-            return <Card
-              key={Math.random()}
-              product={product}
-            />
+            return <Link href={`/shop/${product.id}`} key={Math.random()}>
+              <Card
+                product={product}
+              />
+            </Link>
           })
         }
       </div>

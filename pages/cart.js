@@ -48,35 +48,37 @@ const Cart = () => {
                                 <Link className='text-center text-blue-600 text-2xl font-extrabold' href="/shop">برو به فروشگاه</Link>
                             </div> :
                             cart.cartItems.map((item) => (
-                                <div key={item.id} className='bg-slate-50 rounded-lg shadow-custom p-4 border m-2 flex gap-4 flex-wrap items-center justify-between flex-1'>
-                                    <div>
-                                        <Image width={isSmallScreen ? 100 : 200} height={isSmallScreen ? 100 : 200} src={item.img} alt={item.title} />
+                                <Link href={`/shop/${item.id}`} key={item.id}>
+                                    <div className='bg-slate-50 rounded-lg shadow-custom p-4 border m-2 flex gap-4 flex-wrap items-center justify-between flex-1'>
+                                        <div>
+                                            <Image width={isSmallScreen ? 100 : 200} height={isSmallScreen ? 100 : 200} src={item.img} alt={item.title} />
+                                        </div>
+                                        <div className='w-full md:w-auto'>
+                                            نام محصول: {item.title}
+                                        </div>
+                                        <div className='w-full md:w-auto'>
+                                            دسته بندی: {item.category}
+                                        </div>
+                                        <div className='w-full md:w-auto'>
+                                            تعداد: {item.cartQuantity}
+                                        </div>
+                                        <div className='w-full md:w-auto'>
+                                            قیمت هر واحد: {item.newPrice} تومان
+                                        </div>
+                                        <div className='flex justify-center items-center gap-x-2'>
+                                            <button className='p-1 bg-green-600 text-white rounded-full' onClick={() => addIProductHandler(item)}>
+                                                <PlusIcon className='w-5 h-5' />
+                                            </button>
+                                            <span>{item.cartQuantity}</span>
+                                            <button className='p-1 bg-red-600 text-white rounded-full' onClick={() => decreaseProductHandler(item)}>
+                                                <MinusIcon className='w-5 h-5' />
+                                            </button>
+                                            <button className='p-1 bg-red-400 text-white rounded-full' onClick={() => reMoveProduct(item)}>
+                                                <TrashIcon className='w-5 h-5' />
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className='w-full md:w-auto'>
-                                        نام محصول: {item.title}
-                                    </div>
-                                    <div className='w-full md:w-auto'>
-                                        دسته بندی: {item.category}
-                                    </div>
-                                    <div className='w-full md:w-auto'>
-                                        تعداد: {item.cartQuantity}
-                                    </div>
-                                    <div className='w-full md:w-auto'>
-                                        قیمت هر واحد: {item.newPrice} تومان
-                                    </div>
-                                    <div className='flex justify-center items-center gap-x-2'>
-                                        <button className='p-1 bg-green-600 text-white rounded-full' onClick={() => addIProductHandler(item)}>
-                                            <PlusIcon className='w-5 h-5' />
-                                        </button>
-                                        <span>{item.cartQuantity}</span>
-                                        <button className='p-1 bg-red-600 text-white rounded-full' onClick={() => decreaseProductHandler(item)}>
-                                            <MinusIcon className='w-5 h-5' />
-                                        </button>
-                                        <button className='p-1 bg-red-400 text-white rounded-full' onClick={() => reMoveProduct(item)}>
-                                            <TrashIcon className='w-5 h-5' />
-                                        </button>
-                                    </div>
-                                </div>
+                                </Link>
                             ))
                     }
                 </div>
