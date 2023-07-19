@@ -16,8 +16,8 @@ const Card = ({ product }) => {
 
     return (
         <>
-            <section className="card relative group rounded-lg">
-                <Image width={200} height={200} src={product.img} alt={product.title} className="card-img" />
+            <section className="card relative group rounded-lg bg-white flex flex-col h-[18rem] items-center">
+                <Image width={200} height={200} src={product.img} alt={product.title} className="card-img max-h-[8rem]" />
                 <div className="card-details">
                     <h3 className="card-title">{product.title}</h3>
                     <section className="card-reviews flex items-center">
