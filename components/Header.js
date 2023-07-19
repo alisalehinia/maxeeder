@@ -33,7 +33,7 @@ const Header = () => {
         color: 'blue',
     };
     return (
-        <motion.div className='flex p-4 bg-gradient-to-r from-slate-700 to-slate-950 items-center justify-between bg-primary-100 mb-4 drop-shadow-xl'
+        <motion.div className='flex p-4 bg-gradient-to-r from-slate-700 to-slate-950 items-center justify-between bg-primary-100 mb-4 shadow-slate-600 shadow-md'
             variants={navVariants}
             initial="hidden"
             whileInView="show"

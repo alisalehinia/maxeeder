@@ -81,7 +81,7 @@ const Cart = () => {
                     }
                 </div>
 
-                {cart.cartItems.length !== 0 && <div className='bg-slate-100 p-2 rounded-lg h-96'>
+                {cart.cartItems.length !== 0 && <div className='bg-slate-100 p-2 rounded-lg h-96 mt-2 shadow-custom'>
                     <h2 className='text-center font-extrabold text-lg mb-2 p-1 border-b'>صورت حساب</h2>
                     <div className='flex items-center  mb-2 p-1 border-b ' >
                         <label for="discount" className="block">کد تخفیف:</label>

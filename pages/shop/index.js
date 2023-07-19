@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import Nav from '../components/navigation/Nav';
-import Recommended from "../components/recommended/Recommended";
-import Products from "../components/products/Products";
-import Sidebar from "../components/sidebar/Sidebar"
-import productsJson from "../db/index"
-import Card from '../components/Card';
+import Nav from "../../components/navigation/Nav"
+import Recommended from "../../components/recommended/Recommended";
+import Products from "../../components/products/Products";
+import Sidebar from "../../components/sidebar/Sidebar"
+import productsJson from "../../db/index"
+import Card from '../../components/Card';
 import { FunnelIcon } from '@heroicons/react/24/outline';
 import { useMediaQuery } from '@mui/material';
 import ReactPaginate from 'react-paginate';
-import { getTotals, loadCartItemsFromLocalStorage } from '../features/cartSlice';
+import { getTotals, loadCartItemsFromLocalStorage } from '../../features/cartSlice';
 import { useDispatch } from 'react-redux';
 
 const Shop = () => {
